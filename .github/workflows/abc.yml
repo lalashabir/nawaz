@@ -1,0 +1,53 @@
+name: Build and Deploy HTML Project
+
+on:
+  push:
+    branches:
+      - main  # Trigger this workflow when code is pushed to the "main" branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js (if needed for deploying with gh-pages)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # You can use the Node.js version that fits your project
+
+      # Step 3: Install dependencies (for example, gh-pages)
+      - name: Install dependencies
+        run: npm install gh-pages --save-dev
+
+      # Step 4: (Optional) Build the project (if there is a build step)
+      # For example, if you're using a build tool like webpack or a static site generator
+      - name: Build the project
+        run: echo "No build step needed for plain HTML project"
+
+  deploy:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
+    needs: build  # Ensure that the build job is completed before deploy
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Git (needed for gh-pages deployment)
+      - name: Set up Git
+        run: |
+          git config --global user.name "lalashabir"
+          git config --global user.email "lalashabir529@gmail.com"
+
+      # Step 3: Install gh-pages for deployment
+      - name: Install gh-pages
+        run: npm install gh-pages --save-dev
+
+      # Step 4: Deploy to GitHub Pages using gh-pages
+      - name: Deploy to GitHub Pages
+        run: npx gh-pages -d .  # Deploy the project to GitHub Pages using gh-pages
