@@ -1,44 +1,20 @@
-name: Build and Deploy HTML Project
+name: Build and Deploy HTML to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Only run workflow on push to main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install gh-pages
-        run: npm install
-
-      - name: Build HTML project
-        run: npm run build
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
-
-      - name: Set up Git
-        run: |
-          git config --global user.name "lalashabir"
-          git config --global user.email "lalashabir529@gmail.com"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./  # Or ./dist or ./build if using a build step
