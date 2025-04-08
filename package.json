@@ -1,25 +1,13 @@
 {
-    "name": "html-project",
-    "version": "1.0.0",
-    "description": "A simple HTML project",
-    "main": "index.html",
-    "scripts": {
-      "deploy": "gh-pages -d ."
-    },
-    "dependencies": {},
-    "devDependencies": {
-      "gh-pages": "^3.2.3"
-    },
-    "homepage": "https://lalashabir.github.io/nawaz",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/lalashabir/nawaz.git"
-    },
-    "author": "lalashabir",
-    "license": "MIT",
-    "bugs": {
-      "url": "https://github.com/lalashabir/nawaz/issues"
-    },
-    "homepage": "https://lalashabir.github.io/nawaz"
-  }
-  
+  "name": "html-project",
+  "version": "1.0.0",
+  "description": "A simple HTML project",
+  "scripts": {
+    "build": "echo 'No build needed for plain HTML'",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  },
+  "homepage": "https://lalashabir.github.io/nawaz"
+}
