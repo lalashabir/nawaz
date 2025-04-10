@@ -1,8 +1,9 @@
 name: Build and Deploy HTML to GitHub Pages
 
 on:
-  push:
-    branches:
+  pull_request:
+    types: 
+      - opened
       
   workflow_dispatch:
 
