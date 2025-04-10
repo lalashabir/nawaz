@@ -3,8 +3,8 @@ name: Build and Deploy HTML to GitHub Pages
 on:
   push:
     branches:
-      - main  # Only run workflow on push to main
-      - gh-pages
+      
+  workflow_dispatch:
 
 jobs:
   deploy:
