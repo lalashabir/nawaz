@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: Build and Deploy HTML to GitHub Pages
 
 on:
@@ -8,13 +9,42 @@ on:
   workflow_dispatch:
 
 jobs:
+=======
+name: Build and Deploy HTML Project
+on:
+  push:
+    branches:
+      - main
+      - gh-pages
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install gh-pages
+        run: npm install
+      - name: Build HTML project
+        run: npm run build
+>>>>>>> gh-pages
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+<<<<<<< HEAD
 
+=======
+      - name: Set up Git
+        run: |
+          git config --global user.name "lalashabir"
+          git config --global user.email "lalashabir529@gmail.com"
+>>>>>>> gh-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
